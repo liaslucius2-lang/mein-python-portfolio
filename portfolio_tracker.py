@@ -46,10 +46,19 @@ while True:
         print(teuerste_aktie(mein_depot))
     elif wahl == "4":
         name = input("Aktienname: ")
-        kurs = float(input("Kurs: "))
-        aktie_hinzufuegen(mein_depot, name, kurs)
+        if name.strip()=="":
+            print("Name darf nicht leer sein.")
+        else:    
+            try:
+                kurs = float(input("Kurs: "))
+                aktie_hinzufuegen(mein_depot, name, kurs)
+            except ValueError:
+                print("Bitte eine Zahl eingeben!")
     elif wahl == "5":
         name = input("Welche Aktie löschen? ")
         aktie_loeschen(mein_depot, name)
     elif wahl == "6":
         break
+    else:
+        print("Ungültige Wahl")
+
